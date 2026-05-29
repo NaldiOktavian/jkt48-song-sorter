@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKT48 Song Sorter</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ========================= -->
+<!-- 🎮 START SCREEN -->
+<!-- ========================= -->
+
+<div id="start-screen" class="start-screen">
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+
+    <!-- BACKGROUND -->
+    <div class="start-bg"></div>
+
+    <!-- FLOATING NOTES -->
+  <div class="floating-notes">
+
+    <span class="float1">♪</span>
+    <span class="float2">♫</span>
+    <span class="float3">♬</span>
+    <span class="float4">✦</span>
+    <span class="float5">✧</span>
+    <span class="float6">♥</span>
+    <span class="float7">♡</span>
+    <span class="float8">✦</span>
+    <span class="float10">♪</span>
+    <span class="float11">★</span>
+    <span class="float12">☆</span>
+
+  </div>
+
+    <!-- STARS -->
+    <div class="stars layer1"></div>
+    <div class="stars layer2"></div>
+
+    <!-- ========================= -->
+    <!-- 🎀 TOP NAVBAR -->
+    <!-- ========================= -->
+
+    <div class="top-nav">
+
+      <!-- LOGO -->
+      <img
+        src="assets/logo-jkt.svg"
+        class="nav-logo"
+      >
+
+      <!-- BURGER -->
+      <button
+      class="burger-btn"
+      id="burgerBtn"
+      onclick="toggleMenu()"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- 📋 SIDE MENU -->
+    <!-- ========================= -->
+
+    <div id="side-menu" class="side-menu">
+
+      <button onclick="scrollToAbout()">
+        ABOUT
+      </button>
+
+      <button onclick="scrollToPreview()">
+        TRISHA DAILY PICKS
+      </button>
+
+    </div>
+
+    <!-- LOGO -->
+    <img
+      src="assets/logo-games.png"
+      class="rh-logo"
+    >
+
+    <div class="countdown-title">
+      COUNTDOWN TO REQUEST HOUR 2026
+    </div>
+
+    <div class="countdown-box">
+
+      <div class="count-item">
+        <span id="days">00</span>
+        <small>DAYS</small>
+      </div>
+
+      <div class="count-item">
+        <span id="hours">00</span>
+        <small>HOURS</small>
+      </div>
+
+      <div class="count-item">
+        <span id="minutes">00</span>
+        <small>MINS</small>
+      </div>
+
+      <div class="count-item">
+        <span id="seconds">00</span>
+        <small>SECS</small>
+      </div>
+
+    </div>
+
+    <!-- START BUTTON -->
+    <div class="start-ui">
+
+      <button
+        class="start-btn"
+        onclick="enterGame()"
+      >
+        ▶ START GAME
+      </button>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="start-footer">
+      Built with ❤️ for JKT48 Fans
+    </div>
+
+  </div>
+
+  <!-- ========================= -->
+  <!-- 📖 ABOUT SECTION -->
+  <!-- ========================= -->
+
+  <div
+    id="about-section"
+    class="about-box"
+  >
+
+    <div class="about-title">
+      ABOUT
+    </div>
+
+    <div class="about-text">
+
+      JKT48 Song Sorter adalah website fanmade
+      untuk membantu fans menentukan ranking
+      lagu favorit Request Hour mereka.
+
+      <br><br>
+
+      Sistem akan mempertemukan dua lagu,
+      lalu kamu memilih favoritmu sampai
+      terbentuk 40 lagu terbaik versi kamu sendiri.
+
+    </div>
+
+  </div>
+
+  <div class="about-stats-box">
+
+    <div class="about-stat">
+      <div class="about-number">419</div>
+      <div class="about-label">Songs to Sort</div>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="about-stat">
+      <div class="about-number">40</div>
+      <div class="about-label">Final Best Songs</div>
+    </div>
+
+    <div class="about-desc">
+
+      Dari ratusan lagu JKT48 yang pernah hadir
+      di theater, konser, dan single original
+      hanya lagu terbaik pilihan fans
+      yang akan bertahan sampai peringkat akhir.
+
+      <br><br>
+
+      Susun ranking versimu sendiri dan rasakan
+      kembali nostalgia Request Hour
+      bersama lagu-lagu favoritmu.
+
+    </div>
+
+  </div>
+
+<!-- ========================= -->
+<!-- 🎀 TRISHA DAILY PICKS -->
+<!-- ========================= -->
+
+  <section id="preview-section" class="daily-picks-section">
+
+    <div class="daily-picks-glow"></div>
+
+    <div class="daily-picks-card">
+
+      <div class="daily-picks-header">
+
+        <div class="daily-picks-small">
+          🎀 TRISHA DAILY PICKS
+        </div>
+
+        <div class="daily-picks-title">
+          Lagu Pilihan Hari Ini
+        </div>
+
+      </div>
+
+      <div class="daily-coverflow">
+
+        <div
+          id="coverflow-track"
+          class="coverflow-track"
+        ></div>
+
+      </div>
+
+      <div
+        id="coverflow-dots"
+        class="coverflow-dots"
+      ></div>
+
+      <div class="coverflow-info">
+
+        <div
+          id="coverflow-title"
+          class="coverflow-title"
+        >
+          Song Title
+        </div>
+
+        <div
+          id="coverflow-setlist"
+          class="coverflow-setlist"
+        >
+          JKT48
+        </div>
+
+        <button
+          id="coverflow-play"
+          class="coverflow-play"
+        >
+          ▶ PLAY PREVIEW
+        </button>
+
+      </div>
+
+      <div class="daily-trisha-comment">
+
+        <img
+          src="assets/trisha_daily.png"
+          class="daily-picks-trisha"
+        >
+
+        <div
+          id="daily-dialog"
+          class="daily-picks-dialog"
+        >
+          "Aku pilih lagu spesial buat nemenin hari kakak 💕"
+        </div>
+
+      </div>
+
+    </div>
+
+    <audio id="daily-picks-audio"></audio>
+
+  </section>
+
+</div>
+
+<div class="app">
+
+  <!-- ========================= -->
+  <!-- 🎯 MENU SCREEN -->
+  <!-- ========================= -->
+  <div id="menu" class="menu hidden">
+
+    <button
+      class="menu-back-btn"
+      onclick="backToStart()"
+    >
+      ◀ BACK
+    </button>    
+
+    <h1 class="game-title">JKT48 SONG SORTER</h1>
+
+    <div class="menu-title">SELECT MODE</div>
+
+    <button class="menu-btn easy" onclick="startSorter(40)">
+      <img src="assets/gif/easy.gif" class="mode-gif">
+      <div class="mode-text">
+        <div class="mode-name">EASY</div>
+        <div class="mode-sub">40 SONGS • ~2-3 MIN</div>
+      </div>
+    </button>
+
+    <button class="menu-btn medium" onclick="startSorter(60)">
+      <img src="assets/gif/medium.gif" class="mode-gif">
+      <div class="mode-text">
+        <div class="mode-name">MEDIUM</div>
+        <div class="mode-sub">60 SONGS • ~4-6 MIN</div>
+      </div>
+    </button>
+
+    <button class="menu-btn hard" onclick="startSorter(100)">
+      <img src="assets/gif/hard.gif" class="mode-gif">
+      <div class="mode-text">
+        <div class="mode-name">HARD</div>
+        <div class="mode-sub">100 SONGS • ~8-12 MIN</div>
+      </div>
+    </button>
+
+    <button class="menu-btn legendary" onclick="openLegendaryPopup()">
+      <img src="assets/gif/legendary.gif" class="mode-gif">
+      <div class="mode-text">
+        <div class="mode-name">LEGENDARY</div>
+        <div class="mode-sub">FULL LIBRARY • ~20-35 MIN</div>
+      </div>
+    </button>
+
+  </div>
+
+  <!-- ========================= -->
+  <!-- ⚔️ BATTLE SCREEN -->
+  <!-- ========================= -->
+  <div id="battle-screen" class="hidden">
+
+    <button class="battle-back-btn" onclick="backToStart()">◀ BACK</button>
+
+    <div class="game-title">JKT48 SONG SORTER</div>
+
+    <div class="battle-area-new">
+
+      <div class="battle-card" onclick="choose(0)">
+        <img id="battle-left-cover">
+        <div class="battle-name" id="left-title"></div>
+      </div>
+
+      <div class="vs-text">VS</div>
+
+      <div class="battle-card" onclick="choose(1)">
+        <img id="battle-right-cover">
+        <div class="battle-name" id="right-title"></div>
+      </div>
+
+    </div>
+
+  <div class="progress-container">
+    <div id="progress-bar">
+      <span id="progress-text">0%</span>
+    </div>
+  </div>
+
+    <button class="tie-btn" onclick="tie()">Tie!</button>
+    <button class="undo-btn" onclick="undo()">Undo</button>
+
+  </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- 🏆 RESULT SCREEN V2 -->
+<!-- ========================= -->
+
+<div id="result-screen" class="result-screen hidden">
+    <!-- HEADER -->
+    <div class="result-header">
+
+    <div class="result-small-title">
+      🏆 YOUR REQUEST HOUR
+    </div>
+
+    <div class="result-title-row">
+
+    <input
+      type="text"
+      id="ranking-name"
+      class="ranking-name"
+      value="Request Hour Result"
+      readonly
+    >
+
+      <button id="edit-title-btn">
+        ✏️
+      </button>
+
+    </div>
+
+    </div>
+      <!-- TOP 3 -->
+      <div id="top3-grid" class="top3-grid"></div>
+      <!-- RANK GRID -->
+      <div id="ranking-grid" class="ranking-grid"></div>
+      <!-- ACTION -->
+      <div class="result-actions">   
+
+        <button onclick="restartGame()" class="glass-btn">
+          🔁 PLAY AGAIN
+        </button>
+
+        <button onclick="backToStart()" class="glass-btn">
+          🏠 HOME
+        </button>
+
+    </div>
+</div>
+
+
+<!-- ========================= -->
+<!-- 🎬 REVEAL SCREEN -->
+<!-- ========================= -->
+<div id="reveal-screen" style="display:none;">
+
+  <!-- 🔢 TIMER OVERLAY -->
+  <div id="reveal-overlay">
+    <div id="timer">01</div>
+  </div>
+
+  <!-- 🎵 SONG DISPLAY -->
+  <div id="reveal-content">
+    <div id="reveal-rank"></div>
+    <img id="reveal-cover">
+    <div id="reveal-title" class="reveal-title"></div>
+  </div>
+
+  <!-- ⏭️ SKIP -->
+  <button id="skip-btn">SKIP ⏭️</button>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- ⚠️ LEGENDARY POPUP -->
+<!-- ========================= -->
+<div id="legendary-popup" class="popup hidden">
+
+  <div class="trisha-popup">
+
+    <div class="trisha-dialog">
+
+      <div class="dialog-name">
+        Trisha
+      </div>
+
+    <div class="dialog-text" id="trisha-text"></div>
+
+    </div>
+
+    <!-- TRISHA -->
+    <img
+      src="assets/trisha.png"
+      class="trisha-img"
+    >
+
+    <!-- BUTTON -->
+    <div class="dialog-buttons">
+
+      <button
+        class="dialog-btn cancel"
+        onclick="closeLegendaryPopup()"
+      >
+        KEMBALI
+      </button>
+
+      <button
+        class="dialog-btn confirm"
+        onclick="confirmLegendary()"
+      >
+        GASSS 🔥
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ========================= -->
+<!-- 🔊 AUDIO -->
+<!-- ========================= -->
+<audio id="preview-player"></audio>
+<audio id="reveal-sfx" src="assets/sfx/reveal.mp3"></audio>
+
+
+<!-- ========================= -->
+<!-- 📜 SCRIPT -->
+<!-- ========================= -->
+<script src="officialSongs.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
