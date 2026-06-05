@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JKT48 Song Sorter</title>
 
+<link
+  rel="icon"
+  type="image/webp"
+  href="assets/favicon.webp"
+/>
+
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -350,6 +356,14 @@
 
       <div class="battle-card" onclick="choose(0)">
         <img id="battle-left-cover">
+
+        <button
+          class="battle-preview-btn"
+          onclick="playBattlePreview(event, 'left')"
+        >
+          ▶
+        </button>
+
         <div class="battle-name" id="left-title"></div>
       </div>
 
@@ -357,23 +371,35 @@
 
       <div class="battle-card" onclick="choose(1)">
         <img id="battle-right-cover">
+
+        <button
+          class="battle-preview-btn"
+          onclick="playBattlePreview(event, 'right')"
+        >
+          ▶
+        </button>
+
         <div class="battle-name" id="right-title"></div>
       </div>
 
     </div>
 
-  <div class="progress-container">
-    <div id="progress-bar">
-      <span id="progress-text">0%</span>
+    <div id="battle-counter" class="battle-counter">
+      Battle 0 / 0
     </div>
-  </div>
+
+    <div class="progress-container">
+      <div id="progress-bar">
+        <span id="progress-text">0%</span>
+      </div>
+    </div>
 
     <button class="tie-btn" onclick="tie()">Tie!</button>
     <button class="undo-btn" onclick="undo()">Undo</button>
 
-  </div>
+    <audio id="battle-preview-audio"></audio>
 
-</div>
+  </div>
 
 <!-- ========================= -->
 <!-- 🏆 RESULT SCREEN V2 -->
@@ -430,7 +456,17 @@
 
   <!-- 🔢 TIMER OVERLAY -->
   <div id="reveal-overlay">
+
+    <div class="countdown-label">
+      NEXT RANK IS COMING...
+    </div>
+
     <div id="timer">01</div>
+
+    <div class="countdown-sub">
+      get ready for the reveal
+    </div>
+
   </div>
 
   <!-- 🎵 SONG DISPLAY -->
@@ -441,7 +477,13 @@
   </div>
 
   <!-- ⏭️ SKIP -->
-  <button id="skip-btn">SKIP ⏭️</button>
+  <button id="skip-countdown-btn">
+    SKIP COUNTDOWN ⏭️
+  </button>
+
+  <button id="skip-song-btn">
+    SKIP SONG ⏭️
+  </button>
 
 </div>
 
@@ -498,6 +540,51 @@
 <audio id="preview-player"></audio>
 <audio id="reveal-sfx" src="assets/sfx/reveal.mp3"></audio>
 
+
+<!-- ========================= -->
+<!-- 🎀 TRISHA CHECKPOINT -->
+<!-- ========================= -->
+
+<div
+  id="milestone-popup"
+  class="milestone-popup hidden"
+>
+
+  <div class="milestone-card">
+
+    <div class="milestone-label">
+      🎀 TRISHA CHECKPOINT
+    </div>
+
+    <img
+      src="assets/trisha_daily.png"
+      class="milestone-trisha"
+    >
+
+    <div
+      id="milestone-title"
+      class="milestone-title"
+    >
+      25% COMPLETE!
+    </div>
+
+    <div
+      id="milestone-text"
+      class="milestone-text"
+    >
+      Semangat kak!
+    </div>
+
+    <button
+      id="milestone-close"
+      class="milestone-close"
+    >
+      LANJUT
+    </button>
+
+  </div>
+
+</div>
 
 <!-- ========================= -->
 <!-- 📜 SCRIPT -->

@@ -289,7 +289,7 @@ const songs = [
   },
   {
     title: "Ballerina dalam Sepi",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/ballerina_dalam_sepi.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -570,7 +570,7 @@ const songs = [
   },
   {
     title: "Burung Unta si Pembohong",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/burung_unta_si_pembohong.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -602,7 +602,7 @@ const songs = [
   },
   {
     title: "Cara Meminum Ramune",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/cara_meminum_ramune.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -642,7 +642,7 @@ const songs = [
   },
   {
     title: "Cinta dalam Handshake",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/cinta_dalam_handshake.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -763,7 +763,7 @@ const songs = [
   },
   {
     title: "Cross",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/cross.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -923,7 +923,7 @@ const songs = [
   },
   {
     title: "Disco di UKS",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/disco_di_uks.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -1075,7 +1075,7 @@ const songs = [
   },
   {
     title: "Finland Miracle",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/finland_miracle.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -1291,7 +1291,7 @@ const songs = [
   },
   {
     title: "Harapan Bowling",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/harapan_bowling.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2067,7 +2067,7 @@ const songs = [
   },
   {
     title: "Menatapmu Sayonara",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/menatapmu_sayonara.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2163,7 +2163,7 @@ const songs = [
   },
   {
     title: "Nice to meet you!",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/nice_to_meet_you.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2355,7 +2355,7 @@ const songs = [
   },
   {
     title: "Pertanda",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/pertanda.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2707,7 +2707,7 @@ const songs = [
   },
   {
     title: "Schoolyard Puppy",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/schoolyard_puppy.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2755,7 +2755,7 @@ const songs = [
   },
   {
     title: "Sekarang Ku Bersama Denganmu",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/sekarang_ku_bersama_denganmu.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -2803,7 +2803,7 @@ const songs = [
   },
   {
     title: "Setlist yang Dinanti",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/setlist_yang_dinanti.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",
@@ -3211,7 +3211,7 @@ const songs = [
   },
   {
     title: "Winning Ball",
-    cover: "assets/covers/ramune.webp",
+    cover: "assets/covers/Ramune.webp",
     audio: "assets/audio/lagu/winning_ball.mp3",
     type: "setlist",
     setlist: "Cara Meminum Ramune",

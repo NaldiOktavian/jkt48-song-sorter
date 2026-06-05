@@ -16,6 +16,9 @@ let gameMode = "score"; // default
 let finalRanking = [];
 let usedPairs = new Set();
 let songPower = {};
+let milestone25 = false;
+let milestone50 = false;
+let milestone75 = false;
 
 // ===============================
 // 🚀 START SCREEN
@@ -170,6 +173,10 @@ currentBattle = 0;
 
 history = [];
 
+milestone25 = false;
+milestone50 = false;
+milestone75 = false;
+
 usedPairs.clear();
 
 nextBattle();
@@ -290,6 +297,69 @@ renderBattle();
 }
 
 // ===============================
+// 🎧 BATTLE PREVIEW AUDIO
+// ===============================
+
+  const battlePreviewAudio =
+    document.getElementById("battle-preview-audio");
+
+  let currentBattlePreviewSide = null;
+
+  function playBattlePreview(event, side){
+
+    event.stopPropagation();
+
+    const song =
+      side === "left"
+        ? currentLeft
+        : currentRight;
+
+    if(!song.audio){
+      alert("Preview audio belum tersedia untuk lagu ini 😭");
+      return;
+    }
+
+    const buttons =
+      document.querySelectorAll(".battle-preview-btn");
+
+    buttons.forEach(btn =>
+      btn.classList.remove("playing")
+    );
+
+    const clickedBtn =
+      event.currentTarget;
+
+    if(
+      currentBattlePreviewSide === side &&
+      !battlePreviewAudio.paused
+    ){
+      battlePreviewAudio.pause();
+      currentBattlePreviewSide = null;
+      return;
+    }
+
+    battlePreviewAudio.src = song.audio;
+    battlePreviewAudio.currentTime = 0;
+
+    battlePreviewAudio.play().catch(()=>{});
+
+    clickedBtn.classList.add("playing");
+
+    currentBattlePreviewSide = side;
+  }
+
+  battlePreviewAudio.onended = () => {
+
+    document
+      .querySelectorAll(".battle-preview-btn")
+      .forEach(btn =>
+        btn.classList.remove("playing")
+      );
+
+    currentBattlePreviewSide = null;
+  };
+
+// ===============================
 // 🎨 RENDER UI
 // ===============================
 
@@ -326,18 +396,99 @@ function renderBattle(){
 // 📊 PROGRESS BAR
 // ===============================
 
-function updateProgress(){
-  const percent = totalBattle > 0
-    ? (currentBattle / totalBattle) * 100
-    : 0;
+  function updateProgress(){
 
-  const bar = document.getElementById("progress-bar");
-  const text = document.getElementById("progress-text");
+    const percent = totalBattle > 0
+      ? (currentBattle / totalBattle) * 100
+      : 0;
 
-  bar.style.width = percent + "%";
-  text.innerText = Math.round(percent) + "%";
+    const bar =
+      document.getElementById("progress-bar");
+
+    const text =
+      document.getElementById("progress-text");
+
+    bar.style.width =
+      percent + "%";
+
+    text.innerText =
+      Math.round(percent) + "%";
+
+    document.getElementById("battle-counter").innerText =
+      `⚔️ Battle ${currentBattle} / ${totalBattle}`;
+
+    checkMilestone(percent);
+  }
+
+function checkMilestone(percent){
+
+  if(percent >= 25 && !milestone25){
+
+    milestone25 = true;
+
+    showMilestone("🎉 25% COMPLETE!");
+  }
+
+  if(percent >= 50 && !milestone50){
+
+    milestone50 = true;
+
+    showMilestone("🔥 50% COMPLETE!");
+  }
+
+  if(percent >= 75 && !milestone75){
+
+    milestone75 = true;
+
+    showMilestone("👑 75% COMPLETE!");
+  }
 }
 
+function showMilestone(title){
+
+  const popup =
+    document.getElementById("milestone-popup");
+
+  const titleEl =
+    document.getElementById("milestone-title");
+
+  const textEl =
+    document.getElementById("milestone-text");
+
+  titleEl.innerText = title;
+
+  let message =
+    "Semangat terus ya kak 💕";
+
+  if(title.includes("25")){
+    message =
+      "Wahh udah seperlempat jalan! Pemanasan dulu kak, jangan nyerlah ya 🎧";
+  }
+
+  if(title.includes("50")){
+    message =
+      "Setengah jalan nih! Favorlit kakak mulai kelihatan 🔥";
+  }
+
+  if(title.includes("75")){
+    message =
+      "Dikit lagi selesai! Aku penasarlan lagu apa yang jadi #1 kakak 👑";
+  }
+
+  textEl.innerText =
+    `"${message}"`;
+
+  popup.classList.remove("hidden");
+
+  const closeBtn =
+    document.getElementById("milestone-close");
+
+  closeBtn.onclick = () => {
+
+    popup.classList.add("hidden");
+
+  };
+}
 
 // ===============================
 // 🏆 CHOOSE
@@ -359,6 +510,18 @@ function saveBattleHistory(){
 }
 
 function choose(side){
+
+  if(battlePreviewAudio){
+  battlePreviewAudio.pause();
+  battlePreviewAudio.currentTime = 0;
+  currentBattlePreviewSide = null;
+
+  document
+    .querySelectorAll(".battle-preview-btn")
+    .forEach(btn =>
+      btn.classList.remove("playing")
+    );
+}
 
   saveBattleHistory();
 
@@ -440,32 +603,64 @@ function startTimer(duration){
 
   return new Promise(resolve => {
 
-    const timerEl = document.getElementById("timer");
+    const timerEl =
+      document.getElementById("timer");
+
     let count = 1;
 
-    const interval = setInterval(()=>{
-      timerEl.innerText = String(count).padStart(2, "0");
-      count++;
+    const interval =
+      setInterval(()=>{
 
-      if(count > 99) count = 1;
+        if(skipCountdown){
 
-    }, duration / 99);
+          const sfx =
+            document.getElementById("reveal-sfx");
 
-    setTimeout(()=>{
-      clearInterval(interval);
-      resolve();
-    }, duration);
+          if(sfx){
+            sfx.pause();
+            sfx.currentTime = 0;
+          }
+
+          clearInterval(interval);
+          clearTimeout(timeout);
+
+          resolve();
+          return;
+        }
+
+        timerEl.innerText =
+          String(count).padStart(2, "0");
+
+        count++;
+
+        if(count > 99) count = 1;
+
+      }, duration / 99);
+
+    const timeout =
+      setTimeout(()=>{
+
+        clearInterval(interval);
+
+        resolve();
+
+      }, duration);
 
   });
-} 
+}
 
 // ===============================
 // 🔥 SKIP SYSTEM (TARUH DI SINI)
 // ===============================
-let skip = false;
+let skipCountdown = false;
+let skipSong = false;
 
-document.getElementById("skip-btn").onclick = () => {
-  skip = true;
+document.getElementById("skip-countdown-btn").onclick = () => {
+  skipCountdown = true;
+};
+
+document.getElementById("skip-song-btn").onclick = () => {
+  skipSong = true;
 };
 
 
@@ -549,7 +744,14 @@ function showResult(){
 
       document.getElementById("reveal-screen").style.display = "none";
 
+      result.classList.add("result-enter");
       result.classList.remove("hidden");
+
+      requestAnimationFrame(()=>{
+
+        result.classList.remove("result-enter");
+
+      });
 
       window.scrollTo({
         top:0,
@@ -578,7 +780,14 @@ function showResult(){
     // =========================
     // 🎬 REVEAL PROCESS
     // =========================
-    skip = false;
+    skipCountdown = false;
+    skipSong = false;
+
+    document.getElementById("skip-countdown-btn")
+      .style.display = "block";
+
+    document.getElementById("skip-song-btn")
+      .style.display = "none";
 
     const song = revealList[index];
 
@@ -608,8 +817,19 @@ function showResult(){
 
     await startTimer(10000);
 
+    if(sfx){
+      sfx.pause();
+      sfx.currentTime = 0;
+    }
+
     // tampilkan hasil
     overlay.style.display = "none";
+
+    document.getElementById("skip-countdown-btn")
+      .style.display = "none";
+
+    document.getElementById("skip-song-btn")
+      .style.display = "block";
 
     let rankNumber = index + 1;
 
@@ -735,6 +955,9 @@ function showResult(){
         preview.currentTime = 0;
         preview.onended = null;
 
+        document.getElementById("skip-song-btn")
+          .style.display = "none";
+
         clearInterval(checkSkip);
         clearTimeout(noAudioTimeout);
 
@@ -743,7 +966,7 @@ function showResult(){
 
       const checkSkip = setInterval(() => {
 
-        if(skip){
+        if(skipSong){
           finishReveal();
         }
 
