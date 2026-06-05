@@ -300,53 +300,56 @@ renderBattle();
 // 🎧 BATTLE PREVIEW AUDIO
 // ===============================
 
-  const battlePreviewAudio =
-    document.getElementById("battle-preview-audio");
+const battlePreviewAudio =
+  document.getElementById("battle-preview-audio");
 
-  let currentBattlePreviewSide = null;
+let currentBattlePreviewSide = null;
 
-  function playBattlePreview(event, side){
+function playBattlePreview(event, side){
 
-    event.stopPropagation();
+  event.stopPropagation();
 
-    const song =
-      side === "left"
-        ? currentLeft
-        : currentRight;
+  if(!battlePreviewAudio) return;
 
-    if(!song.audio){
-      alert("Preview audio belum tersedia untuk lagu ini 😭");
-      return;
-    }
+  const song =
+    side === "left"
+      ? currentLeft
+      : currentRight;
 
-    const buttons =
-      document.querySelectorAll(".battle-preview-btn");
+  if(!song || !song.audio){
+    alert("Preview audio belum tersedia untuk lagu ini 😭");
+    return;
+  }
 
-    buttons.forEach(btn =>
+  document
+    .querySelectorAll(".battle-preview-btn")
+    .forEach(btn =>
       btn.classList.remove("playing")
     );
 
-    const clickedBtn =
-      event.currentTarget;
+  const clickedBtn =
+    event.currentTarget;
 
-    if(
-      currentBattlePreviewSide === side &&
-      !battlePreviewAudio.paused
-    ){
-      battlePreviewAudio.pause();
-      currentBattlePreviewSide = null;
-      return;
-    }
-
-    battlePreviewAudio.src = song.audio;
-    battlePreviewAudio.currentTime = 0;
-
-    battlePreviewAudio.play().catch(()=>{});
-
-    clickedBtn.classList.add("playing");
-
-    currentBattlePreviewSide = side;
+  if(
+    currentBattlePreviewSide === side &&
+    !battlePreviewAudio.paused
+  ){
+    battlePreviewAudio.pause();
+    currentBattlePreviewSide = null;
+    return;
   }
+
+  battlePreviewAudio.src = song.audio;
+  battlePreviewAudio.currentTime = 0;
+
+  battlePreviewAudio.play().catch(()=>{});
+
+  clickedBtn.classList.add("playing");
+
+  currentBattlePreviewSide = side;
+}
+
+if(battlePreviewAudio){
 
   battlePreviewAudio.onended = () => {
 
@@ -359,6 +362,7 @@ renderBattle();
     currentBattlePreviewSide = null;
   };
 
+}
 // ===============================
 // 🎨 RENDER UI
 // ===============================
@@ -655,13 +659,27 @@ function startTimer(duration){
 let skipCountdown = false;
 let skipSong = false;
 
-document.getElementById("skip-countdown-btn").onclick = () => {
-  skipCountdown = true;
-};
+const skipCountdownBtn =
+  document.getElementById("skip-countdown-btn");
 
-document.getElementById("skip-song-btn").onclick = () => {
-  skipSong = true;
-};
+const skipSongBtn =
+  document.getElementById("skip-song-btn");
+
+if(skipCountdownBtn){
+
+  skipCountdownBtn.onclick = () => {
+    skipCountdown = true;
+  };
+
+}
+
+if(skipSongBtn){
+
+  skipSongBtn.onclick = () => {
+    skipSong = true;
+  };
+
+}
 
 
 
@@ -1633,6 +1651,17 @@ function updateDailyDialog(){
 }
 
 function initDailyCoverflow(){
+  
+    if(
+    !coverflowTrack ||
+    !coverflowDots ||
+    !coverflowTitle ||
+    !coverflowSetlist ||
+    !coverflowPlay ||
+    !dailyPicksAudio
+  ){
+    return;
+  }
 
   dailyCoverflowSongs =
     getDailySongs();
