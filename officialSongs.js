@@ -1091,8 +1091,8 @@ const songs = [
   },
   {
     title: "Flying Get",
-    cover: "assets/covers/flying_get.webp",
-    audio: "assets/audio/lagu/flying_get.mp3",
+    cover: "assets/covers/flyingget.webp",
+    audio: "assets/audio/lagu/flyingget.mp3",
     type: "album",
     setlist: null,
     popularity: "High",
@@ -1979,7 +1979,7 @@ const songs = [
   },
   {
     title: "Malu-malu Lollypop",
-    cover: "assets/covers/flying_get.webp",
+    cover: "assets/covers/flyingget.webp",
     audio: "assets/audio/lagu/malumalu_lollypop.mp3",
     type: "album",
     setlist: null,
