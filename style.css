@@ -3325,10 +3325,6 @@ filter:blur(1px);
 /* 🎀 DAILY PICKS MAIN CARD FIX */
 /* ========================= */
 
-.daily-picks-section{
-  padding-top:120px;
-}
-
 .daily-picks-card{
   width:86%;
   max-width:390px;
@@ -3981,4 +3977,44 @@ filter:blur(1px);
     opacity:1;
     transform:scale(1.04);
   }
+}
+
+/* ========================= */
+/* 🐑 MAIN FOOTER */
+/* ========================= */
+
+.main-footer{
+  padding:24px 20px;
+  text-align:center;
+  background:#050505;
+  border-top:1px solid rgba(0,255,255,.12);
+}
+
+.footer-title{
+  font-size:12px;
+  color:#00ffff;
+  text-shadow:0 0 10px #00ffff;
+  margin-bottom:10px;
+}
+
+.footer-text{
+  font-size:8px;
+  line-height:1.8;
+  color:rgba(255,255,255,.65);
+  margin-bottom:8px;
+}
+
+.footer-credit{
+  font-size:8px;
+  color:#ff77aa;
+}
+
+html,
+body,
+.start-screen{
+  background:#000;
+}
+
+.daily-picks-section{
+  padding-bottom:40px !important;
 }

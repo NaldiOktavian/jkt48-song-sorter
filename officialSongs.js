@@ -2283,7 +2283,7 @@ const songs = [
   },
   {
     title: "Peluklah Aku Dari Belakang",
-    cover: "assets/default.jpg",
+    cover: "assets/covers/aitakatta.webp",
     audio: "assets/audio/setlist/Aitakatta/M07_Peluklah_Aku-Dari_Belakang.mp3",
     type: "setlist",
     setlist: "Ingin Bertemu",
@@ -3131,7 +3131,7 @@ const songs = [
   },
   {
     title: "Value Milikku Saja",
-    cover: "assets/default.jpg",
+    cover: "assets/covers/kibouteki.webp",
     audio: "assets/audio/lagu/value_milikku_saja.mp3",
     type: "album",
     setlist: null,

@@ -363,6 +363,22 @@ if(battlePreviewAudio){
   };
 
 }
+
+function stopBattlePreview(){
+
+  if(!battlePreviewAudio) return;
+
+  battlePreviewAudio.pause();
+  battlePreviewAudio.currentTime = 0;
+
+  currentBattlePreviewSide = null;
+
+  document
+    .querySelectorAll(".battle-preview-btn")
+    .forEach(btn =>
+      btn.classList.remove("playing")
+    );
+}
 // ===============================
 // 🎨 RENDER UI
 // ===============================
@@ -515,17 +531,7 @@ function saveBattleHistory(){
 
 function choose(side){
 
-  if(battlePreviewAudio){
-  battlePreviewAudio.pause();
-  battlePreviewAudio.currentTime = 0;
-  currentBattlePreviewSide = null;
-
-  document
-    .querySelectorAll(".battle-preview-btn")
-    .forEach(btn =>
-      btn.classList.remove("playing")
-    );
-}
+  stopBattlePreview();
 
   saveBattleHistory();
 
@@ -565,6 +571,8 @@ function choose(side){
 
 function tie(){
 
+  stopBattlePreview();
+
   saveBattleHistory();
 
   scores[currentLeft.title]++;
@@ -582,6 +590,8 @@ function tie(){
 // ===============================
 
 function undo(){
+
+  stopBattlePreview();
 
   if(history.length === 0) return;
 
@@ -1651,7 +1661,7 @@ function updateDailyDialog(){
 }
 
 function initDailyCoverflow(){
-  
+
     if(
     !coverflowTrack ||
     !coverflowDots ||
