@@ -4018,3 +4018,21 @@ body,
 .daily-picks-section{
   padding-bottom:40px !important;
 }
+
+.battle-preview-btn{
+  width:44px;
+  height:44px;
+
+  top:8px;
+  right:8px;
+
+  z-index:20;
+
+  touch-action:manipulation;
+}
+
+.battle-preview-btn::before{
+  content:"";
+  position:absolute;
+  inset:-10px;
+}

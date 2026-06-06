@@ -307,6 +307,7 @@ let currentBattlePreviewSide = null;
 
 function playBattlePreview(event, side){
 
+  event.preventDefault();
   event.stopPropagation();
 
   if(!battlePreviewAudio) return;
