@@ -1088,6 +1088,20 @@ function confirmLegendary(){
 
 function backToStart(){
 
+  stopBattlePreview();
+
+  if(typeof dailyPicksAudio !== "undefined"){
+    dailyPicksAudio.pause();
+  }
+
+  const preview =
+    document.getElementById("preview-player");
+
+  if(preview){
+    preview.pause();
+    preview.currentTime = 0;
+  }
+
   localStorage.removeItem("currentScreen");
 
   document.body.classList.remove("no-scroll");
