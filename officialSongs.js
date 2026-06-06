@@ -65,7 +65,7 @@ const songs = [
   },
   {
     title: "After Rain",
-    cover: "assets/covers/Hightension.webp",
+    cover: "assets/covers/hightension.webp",
     audio: "assets/audio/lagu/after_rain.mp3",
     type: "Single",
     setlist: null,
@@ -594,7 +594,7 @@ const songs = [
   },
   {
     title: "Cara Ceroboh untuk Mencinta",
-    cover: "assets/covers/darashinai.webp",
+    cover: "assets/covers/Darashinai.webp",
     audio: "assets/audio/lagu/cara_ceroboh_untuk_mencinta.mp3",
     type: "single",
     setlist: null,
@@ -939,7 +939,7 @@ const songs = [
   },
   {
     title: "Don't Look Back",
-    cover: "assets/covers/halLoween.webp",
+    cover: "assets/covers/halloween.webp",
     audio: "assets/audio/lagu/dont_look_back.mp3",
     type: "album",
     setlist: null,
@@ -1315,7 +1315,7 @@ const songs = [
   },
   {
     title: "High Tension",
-    cover: "assets/covers/Hightension.webp",
+    cover: "assets/covers/hightension.webp",
     audio: "assets/audio/lagu/High_tension.mp3",
     type: "album",
     setlist: null,
@@ -1379,7 +1379,7 @@ const songs = [
   },
   {
     title: "Ingin Meraih Puncak!",
-    cover: "assets/covers/halLoween.webp",
+    cover: "assets/covers/halloween.webp",
     audio: "assets/audio/lagu/ingin_meraih_puncak.mp3",
     type: "album",
     setlist: null,
@@ -1675,7 +1675,7 @@ const songs = [
   },
   {
     title: "Kenyataan Yang Telah Ternoda",
-    cover: "assets/covers/Hightension.webp",
+    cover: "assets/covers/hightension.webp",
     audio: "assets/audio/lagu/kenyataan_yang_telah_ternoda.mp3",
     type: "album",
     setlist: null,
@@ -1707,7 +1707,7 @@ const songs = [
   },
   {
     title: "Kesucian Hati U-19",
-    cover: "assets/covers/Hightension.webp",
+    cover: "assets/covers/hightension.webp",
     audio: "assets/audio/lagu/kesucian_hati_u19.mp3",
     type: "album",
     setlist: null,
@@ -2115,7 +2115,7 @@ const songs = [
   },
   {
     title: "Musim yang Selanjutnya",
-    cover: "assets/covers/Hightension.webp",
+    cover: "assets/covers/hightension.webp",
     audio: "assets/audio/lagu/musim_yang_selanjutnya.mp3",
     type: "album",
     setlist: null,
@@ -2515,7 +2515,7 @@ const songs = [
   },
   {
     title: "Ratu Para Idola",
-    cover: "assets/covers/halLoween.webp",
+    cover: "assets/covers/halloween.webp",
     audio: "assets/audio/lagu/ratu_para_idola.mp3",
     type: "album",
     setlist: null,
@@ -3115,7 +3115,7 @@ const songs = [
   },
   {
     title: "UZA",
-    cover: "assets/covers/uza.webp",
+    cover: "assets/covers/UZA.webp",
     audio: "assets/audio/lagu/uza.mp3",
     type: "single",
     setlist: null,
@@ -3127,7 +3127,7 @@ const songs = [
     audio: "assets/audio/lagu/valentine_day_kiss.mp3",
     type: "album",
     setlist: null,
-    popularity: "High",
+    popularity: "low",
   },
   {
     title: "Value Milikku Saja",
